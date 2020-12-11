@@ -8,6 +8,10 @@ See [Alan Wolfe's blog](https://blog.demofox.org/2018/01/30/what-the-heck-is-blu
 to blue noise, if you're lost here. Blue noise point sets are quite useful for placing objects and terrain
 features in natural ways, not to mention a primary use they have in dithering graphics.
 
+This provides 64 blue noise textures, each 64x64 (tiling), in code. You can use these as blue noise point samples
+by placing a point where a particular value is less than some threshold, where the lowest values equal -128 and all
+values are less than 128.
+
 All the API docs are in the one file's class documentation, and are also in methods docs.
 
 The code here is straightforward to use as a library, but it can be quite frustrating to copy the code into
@@ -16,7 +20,7 @@ code, unless it goes just right... the encoding used by some large Strings could
 textures would be incorrect. That's why I encourage using a dependency manager like Gradle or Maven here.
 
 The current version is 0.1.1; it should be available on Maven Central using:
- - Gradle: `implementation com.github.tommyettinger:bluegrass:0.1.1` (may need `api` instead of `implementation`).
+ - Gradle: `implementation "com.github.tommyettinger:bluegrass:0.1.1"` (may need `api` instead of `implementation`).
  - Maven:
  ```xml
  <dependency>
