@@ -19,18 +19,18 @@ your own project by hand because of encoding issues. So, even though you could c
 code, unless it goes just right... the encoding used by some large Strings could be wrong, and the blue noise
 textures would be incorrect. That's why I encourage using a dependency manager like Gradle or Maven here.
 
-The current version is 0.1.1; it should be available on Maven Central using:
- - Gradle: `implementation "com.github.tommyettinger:bluegrass:0.1.1"` (may need `api` instead of `implementation`).
+The current version is 0.1.2; it should be available on Maven Central using:
+ - Gradle: `implementation "com.github.tommyettinger:bluegrass:0.1.2"` (may need `api` instead of `implementation`).
  - Maven:
  ```xml
  <dependency>
    <groupId>com.github.tommyettinger</groupId>
    <artifactId>bluegrass</artifactId>
-   <version>0.1.1</version>
+   <version>0.1.2</version>
  </dependency>
  ```
 
 If Maven Central isn't working, try [JitPack](https://jitpack.io/#tommyettinger/bluegrass).
 
-Major changes are expected to be quite rare; if something is added it will probably stay as it is.
+Major changes are expected to be quite rare; if something is added, the rest will probably stay as it is.
 
