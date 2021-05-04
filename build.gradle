@@ -1,25 +1,26 @@
 buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
-        maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
-        jcenter()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        gradlePluginPortal()
     }
     dependencies {
-        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
-        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.21.0"
+        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.14.2'
     }
 }
 
 apply plugin: 'java-library'
-apply plugin: 'com.bmuschko.nexus'
-apply plugin: 'io.codearte.nexus-staging'
-apply from: 'publish.gradle'
+apply plugin: 'com.vanniktech.maven.publish'
 
 sourceCompatibility = 1.7
 
+
 def projectName = 'bluegrass'
-version '0.1.1'
+version "$VERSION_NAME"
 group 'com.github.tommyettinger'
+
+//api "com.github.tommyettinger:bluegrass:0.1.1"
 
 [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
 
@@ -30,12 +31,18 @@ if (JavaVersion.current().isJava8Compatible()) {
         tasks.withType(Javadoc) {
             // The -quiet is because of some sort of weird JDK JavaCompiler bug:
             // https://discuss.gradle.org/t/passing-arguments-to-compiler-and-javadoc/1661
-            options.addStringOption('Xdoclint:all,-missing', '-quiet')
+            options.addStringOption('Xdoclint:none,-missing', '-quiet')
         }
     }
 }
 
-sourceSets.test.resources.srcDirs += [ file('src/test/resources').path ]
+if(JavaVersion.current().isJava9Compatible()) {
+    allprojects {
+        tasks.withType(JavaCompile) {
+            options.release.set(7)
+        }
+    }
+}
 
 javadoc.destinationDir = file('docs/apidocs')
 
