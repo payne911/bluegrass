@@ -20,7 +20,7 @@ def projectName = 'bluegrass'
 version "$VERSION_NAME"
 group 'com.github.tommyettinger'
 
-//api "com.github.tommyettinger:bluegrass:0.1.1"
+//api "com.github.tommyettinger:bluegrass:0.2.1"
 
 [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
 
