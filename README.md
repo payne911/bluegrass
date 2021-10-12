@@ -28,7 +28,7 @@ The current version is 0.2.1; it should be available on Maven Central using:
  <dependency>
    <groupId>com.github.tommyettinger</groupId>
    <artifactId>bluegrass</artifactId>
-   <version>0.1.2</version>
+   <version>0.2.1</version>
  </dependency>
  ```
 
